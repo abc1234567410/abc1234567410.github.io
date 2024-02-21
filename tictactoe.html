@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>TIC TAC TOE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="loader">
+    <div class="container">
+      <div class="bars-common bar-one"></div>
+      <div class="bars-common bar-two"></div>
+      <div class="bars-common bar-three"></div>
+
+    </div>
+  </div>
+  <div id="content" style="display: none;">
+    <h1>Tic Tac Toe</h1>
+    </p></p>
+    <h1>This game was made by Jarol Marin - Sololearn</h1>
+    <div class="board">
+      <div class="cell" onclick="makeMove(0)"></div>
+      <div class="cell" onclick="makeMove(1)"></div>
+      <div class="cell" onclick="makeMove(2)"></div>
+      <div class="cell" onclick="makeMove(3)"></div>
+      <div class="cell" onclick="makeMove(4)"></div>
+      <div class="cell" onclick="makeMove(5)"></div>
+      <div class="cell" onclick="makeMove(6)"></div>
+      <div class="cell" onclick="makeMove(7)"></div>
+      <div class="cell" onclick="makeMove(8)"></div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+* {
+  overflow: hidden;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+
+  background: #0d1019;
+  background: -moz-linear-gradient(-45deg, #0d1019 0%, #161b29 100%);
+  background: -webkit-linear-gradient(-45deg, #0d1019 0%, #161b29 100%);
+  background: linear-gradient(135deg, #0d1019 0%, #161b29 100%);
+}
+
+.container {
+  width: 60vw;
+  height: 60vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  overflow: hidden;
+}
+
+.bars-common {
+  height: 12vw;
+  max-height: 100%;
+  width: 3vw;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.8), inset 0 0 30px rgba(0, 255, 255, 0.8);
+}
+
+.bar-one {
+  left: 0;
+  right: 12vw;
+  top: 0;
+  bottom: 0;
+}
+
+.bar-two {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.bar-three {
+  left: 12vw;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.bar-one {
+  animation: barOne 1s .33s ease infinite;
+}
+
+@keyframes barOne {
+
+  0%,
+  100% {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.8), inset 0 0 30px rgba(0, 255, 255, 0.8);
+  }
+
+  50% {
+    height: 6vw;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(255, 0, 255, 0.8), inset 0 0 30px rgba(255, 0, 255, 0.8);
+  }
+}
+
+.bar-two {
+  animation: barTwo 1s .66s ease infinite;
+}
+
+@keyframes barTwo {
+
+  0%,
+  100% {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.8), inset 0 0 30px rgba(0, 255, 255, 0.8);
+  }
+
+  50% {
+    height: 6vw;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(255, 0, 255, 0.8), inset 0 0 30px rgba(255, 0, 255, 0.8);
+  }
+}
+
+.bar-three {
+  animation: barThree 1s .99s ease infinite;
+}
+
+@keyframes barThree {
+
+  0%,
+  100% {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.8), inset 0 0 30px rgba(0, 255, 255, 0.8);
+  }
+
+  50% {
+    height: 6vw;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(255, 0, 255, 0.8), inset 0 0 30px rgba(255, 0, 255, 0.8);
+  }
+}
+
+
+@keyframes animate {
+
+  0%,
+  100% {
+    background: #00adff;
+  }
+
+  33.33% {
+    background: #ff0055;
+  }
+
+  66.66% {
+    background: #6600ff;
+  }
+}
+
+#content {
+  height: 100vh;
+  overflow: hidden;
+}
+
+h1 {
+  position: absolute;
+  height: 30%;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 3em;
+  font-weight: 200;
+  display: inline-block;
+  background: linear-gradient(90deg, #00adff, #ff0055, #6600ff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: background 10s infinite;
+  background-size: 300% 300%;
+}
+
+
+.board {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+  width: 190px;
+  height: 190px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #00adff, #ff0055, #6600ff);
+  animation: animate 5s infinite;
+}
+
+.cell {
+  font-family: 'Varela Round', sans-serif;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #0d1019 0%, #161b29 100%);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes background {
+
+  0%,
+  100% {
+    background-position: -200%;
+    text-shadow: 0 0 10px #00adff, 0 0 20px #ff0055, 0 0 30px #6600ff;
+  }
+
+  50% {
+    background-position: 200%;
+    text-shadow: 0 0 10px #6600ff, 0 0 20px #ff0055, 0 0 30px #00adff;
+  }
+}
+</style>
+
+<script>
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    var loader = document.getElementById('loader');
+    var content = document.getElementById('content');
+
+    // Hide the content initially
+    content.style.opacity = 0;
+
+    // Fade out the loader gradually
+    var opacity = 1;
+    var fadeOutInterval = setInterval(function() {
+      opacity -= 0.05;
+      loader.style.opacity = opacity;
+
+      // When the loader is completely faded out
+      if (opacity <= 0) {
+        clearInterval(fadeOutInterval);
+        loader.style.display = 'none'; // Hide the loader completely
+
+        // Show the content
+        content.style.display = 'block';
+
+        // Fade in the content gradually
+        opacity = 0;
+        var fadeInInterval = setInterval(function() {
+          opacity += 0.05;
+          content.style.opacity = opacity;
+
+          // When the content is fully faded in
+          if (opacity >= 1) {
+            clearInterval(fadeInInterval);
+          }
+        }, 100);
+      }
+    }, 100);
+  }, 5000); // Wait for 5 seconds before showing the content
+});
+
+const board = [0, 0, 0, 0, 0, 0, 0, 0, 0]; // Represents the Tic Tac Toe board
+const userSymbol = "×";
+const computerSymbol = "o";
+
+function makeMove(index) {
+  if (board[index] !== 0) return; // Cell already occupied
+
+  board[index] = userSymbol; // User makes a move
+  document.getElementsByClassName("cell")[index].textContent = userSymbol;
+
+  if (checkWin(userSymbol)) {
+    setTimeout(() => {
+      alert("You win!");
+      resetBoard();
+    }, 100);
+    return;
+  }
+
+  if (board.filter(cell => cell === 0).length === 0) {
+    setTimeout(() => {
+      alert("It's a tie!");
+      resetBoard();
+    }, 100);
+    return;
+  }
+
+  const computerMove = getComputerMove();
+  board[computerMove] = computerSymbol; // Computer makes a move
+  document.getElementsByClassName("cell")[computerMove].textContent = computerSymbol;
+
+  if (checkWin(computerSymbol)) {
+    setTimeout(() => {
+      alert("Computer wins!");
+      resetBoard();
+    }, 100);
+    return;
+  }
+}
+
+function getComputerMove() {
+  // Call the minimax function to get the best move for the computer
+  const bestMove = minimax(board, computerSymbol).index;
+  return bestMove;
+}
+
+function minimax(newBoard, player) {
+  // Base cases: check for terminal states (win, lose, tie)
+  if (checkWin(userSymbol)) {
+    return { score: -1 };
+  } else if (checkWin(computerSymbol)) {
+    return { score: 1 };
+  } else if (newBoard.filter(cell => cell === 0).length === 0) {
+    return { score: 0 };
+  }
+
+  // Collect all possible moves and their scores
+  const moves = [];
+  for (let i = 0; i < newBoard.length; i++) {
+    if (newBoard[i] === 0) {
+      const move = {};
+      move.index = i;
+      newBoard[i] = player;
+
+      if (player === computerSymbol) {
+        const result = minimax(newBoard, userSymbol);
+        move.score = result.score;
+      } else {
+        const result = minimax(newBoard, computerSymbol);
+        move.score = result.score;
+      }
+
+      newBoard[i] = 0;
+      moves.push(move);
+    }
+  }
+
+  // Choose the move with the highest score if the computer's turn, or the move with the lowest score if the user's turn
+  let bestMove;
+  if (player === computerSymbol) {
+    let bestScore = -Infinity;
+    for (let i = 0; i < moves.length; i++) {
+      if (moves[i].score > bestScore) {
+        bestScore = moves[i].score;
+        bestMove = i;
+      }
+    }
+  } else {
+    let bestScore = Infinity;
+    for (let i = 0; i < moves.length; i++) {
+      if (moves[i].score < bestScore) {
+        bestScore = moves[i].score;
+        bestMove = i;
+      }
+    }
+  }
+
+  // Return the chosen move
+  return moves[bestMove];
+}
+
+function checkWin(symbol) {
+  // Check if the specified symbol has won the game
+  const winPatterns = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+    [0, 4, 8], [2, 4, 6] // Diagonals
+  ];
+
+  for (let pattern of winPatterns) {
+    if (
+      board[pattern[0]] === symbol &&
+      board[pattern[1]] === symbol &&
+      board[pattern[2]] === symbol
+    ) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function resetBoard() {
+  board.fill(0);
+  const cells = document.getElementsByClassName("cell");
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].textContent = "";
+  }
+}
+</script>
